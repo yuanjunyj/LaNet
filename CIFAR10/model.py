@@ -145,7 +145,7 @@ class NetworkCIFAR(nn.Module):
         logits_aux = None
         s0 = s1 = self.stem(input)
         if not drop_path_prob_decay:
-            dpr = [self.drop_path_prob for _ in len(self.cells)]
+            dpr = [self.drop_path_prob] * len(self.cells)
         else:
             dpr = [x.item() for x in torch.linspace(0, self.drop_path_prob, len(self.cells))] 
         for i, cell in enumerate(self.cells):
